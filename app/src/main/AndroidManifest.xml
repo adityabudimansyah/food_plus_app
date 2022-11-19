@@ -13,6 +13,13 @@
         android:theme="@style/Theme.FoodPlus"
         tools:targetApi="31">
         <activity
+            android:name=".activities.OnboardingActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".activities.ForgotPasswordActivity"
             android:exported="false"
             android:parentActivityName=".activities.SigninEmailActivity">
@@ -48,7 +55,6 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 

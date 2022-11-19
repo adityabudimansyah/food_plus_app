@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.myapp.foodplus.R
 import com.myapp.foodplus.databinding.ActivityForgotPasswordBinding
-import com.myapp.foodplus.databinding.ActivitySigninBinding
 
 class ForgotPasswordActivity : AppCompatActivity() {
 
