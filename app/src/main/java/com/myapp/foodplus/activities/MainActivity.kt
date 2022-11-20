@@ -1,11 +1,10 @@
 package com.myapp.foodplus.activities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.navigation.findNavController
-import androidx.navigation.ui.setupWithNavController
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.myapp.foodplus.R
+import android.os.Handler
+import android.os.Looper
 import com.myapp.foodplus.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -17,9 +16,10 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottomView)
-        val navController = findNavController(R.id.fragment)
-        bottomNavigationView.setupWithNavController(navController)
-
+        Handler(Looper.getMainLooper()).postDelayed({
+            val intent = Intent(this, OnboardingActivity::class.java)
+            startActivity(intent)
+            finish()
+        }, 2000)
     }
 }

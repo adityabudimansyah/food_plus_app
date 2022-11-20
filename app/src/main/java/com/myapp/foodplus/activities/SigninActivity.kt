@@ -24,15 +24,5 @@ class SigninActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        binding.btLoginGoogle.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-        }
-
-        binding.btLoginFacebook.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-        }
-
     }
 }

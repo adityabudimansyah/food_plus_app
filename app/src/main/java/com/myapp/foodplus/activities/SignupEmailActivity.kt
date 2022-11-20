@@ -1,6 +1,5 @@
 package com.myapp.foodplus.activities
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.myapp.foodplus.R
@@ -16,11 +15,6 @@ class SignupEmailActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setToolbar()
-
-        binding.btSignupEmail.setOnClickListener {
-            val intent = Intent (this, MainActivity::class.java)
-            startActivity(intent)
-        }
 
     }
 
