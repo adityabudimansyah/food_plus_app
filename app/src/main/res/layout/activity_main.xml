@@ -1,45 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/motionLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/backgroundColor"
-    app:layoutDescription="@xml/activity_main_scene"
     tools:context=".activities.MainActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/backgroundLayout"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:background="@drawable/bg_splash_screen"
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomView"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@color/white"
+        app:menu="@menu/bottom_menu"
+        app:labelVisibilityMode="labeled"
+        app:itemTextColor="@drawable/selector_color_bottom_nav"
+        app:itemIconTint="@drawable/selector_color_bottom_nav"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <ImageView
-        android:id="@+id/logoOrange"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:src="@drawable/app_icon"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <fragment
+        android:id="@+id/fragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:defaultNavHost="true"
+        app:layout_constraintBottom_toTopOf="@+id/bottomView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="@string/app_name" />
-
-    <ImageView
-        android:id="@+id/logoWhite"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:src="@drawable/app_icon"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:tint="@color/white"
-        android:contentDescription="@string/app_name" />
+        app:navGraph="@navigation/bottom_nav" />
 
-</androidx.constraintlayout.motion.widget.MotionLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
