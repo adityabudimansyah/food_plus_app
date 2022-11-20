@@ -15,6 +15,10 @@ class ForgotPasswordActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setToolbar()
+
+        binding.btSend.setOnClickListener {
+            finish()
+        }
     }
 
     private fun setToolbar() {
