@@ -44,51 +44,75 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
 
-    <androidx.appcompat.widget.AppCompatButton
+    <LinearLayout
         android:id="@+id/btLoginGoogle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/selector_button_login"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:clickable="true"
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="28dp"
-        android:background="@drawable/selector_button_login"
-        android:fontFamily="@font/poppins_semibold"
-        android:text="Sign in with Google"
-        android:textAllCaps="false"
-        android:textColor="@color/textColorPrimary"
-        android:textSize="14sp"
-        android:stateListAnimator="@null"
-        android:includeFontPadding="false"
-        android:drawableStart="@drawable/ic_google"
-        android:drawablePadding="10dp"
-        android:gravity="center_vertical"
-        android:paddingStart="100dp"
         android:elevation="2dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvDescription" />
+        app:layout_constraintTop_toBottomOf="@+id/tvDescription">
 
-    <androidx.appcompat.widget.AppCompatButton
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_google" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="Sign in with Google"
+            android:textColor="@color/textColorPrimary"
+            android:textSize="14sp"
+            android:paddingTop="2dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/btLoginFacebook"
         android:layout_width="match_parent"
-        android:layout_height="49dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_button_login"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:clickable="true"
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="18dp"
-        android:background="@drawable/selector_button_login"
-        android:fontFamily="@font/poppins_semibold"
-        android:text="Sign in with Facebook"
-        android:textAllCaps="false"
-        android:textColor="@color/textColorPrimary"
-        android:textSize="14sp"
-        android:stateListAnimator="@null"
-        android:includeFontPadding="false"
-        android:drawableStart="@drawable/ic_facebook"
-        android:drawablePadding="10dp"
-        android:gravity="center_vertical"
-        android:paddingStart="85dp"
         android:elevation="2dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btLoginGoogle" />
+        app:layout_constraintTop_toBottomOf="@+id/btLoginGoogle">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_facebook" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="Sign in with Facebook"
+            android:textColor="@color/textColorPrimary"
+            android:textSize="14sp"
+            android:paddingTop="2dp"/>
+
+    </LinearLayout>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btLoginEmail"

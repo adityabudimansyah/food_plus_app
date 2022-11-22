@@ -1,60 +1,108 @@
 package com.myapp.foodplus.fragments
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.provider.Settings
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RelativeLayout
+import android.widget.Toast
+import androidx.fragment.app.Fragment
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.LatLng
+import com.karumi.dexter.Dexter
+import com.karumi.dexter.PermissionToken
+import com.karumi.dexter.listener.PermissionDeniedResponse
+import com.karumi.dexter.listener.PermissionGrantedResponse
+import com.karumi.dexter.listener.PermissionRequest
+import com.karumi.dexter.listener.single.PermissionListener
 import com.myapp.foodplus.R
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [DiscoverFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class DiscoverFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+class DiscoverFragment : Fragment(), OnMapReadyCallback {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+    private var isPermissionGranted: Boolean = false
+
+    override fun onMapReady(googleMap: GoogleMap) {
+
+        // Add a marker in Sydney and move the camera
+        googleMap.isMyLocationEnabled = true
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLng(-7.793358, 110.370479), 12f))
+
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_discover, container, false)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment DiscoverFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            DiscoverFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        checkMyPermission()
+
+        if (isPermissionGranted) {
+            val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
+            mapFragment?.getMapAsync(this)
+            val myLocationButton: View? = mapFragment?.view?.findViewById(0x2)
+
+            if (myLocationButton != null && myLocationButton.layoutParams is RelativeLayout.LayoutParams) {
+                // location button is inside of RelativeLayout
+                val params = myLocationButton.layoutParams as RelativeLayout.LayoutParams
+
+                // Align it to - parent BOTTOM|LEFT
+                params.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM)
+                params.addRule(RelativeLayout.ALIGN_PARENT_LEFT)
+                params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, 0)
+                params.addRule(RelativeLayout.ALIGN_PARENT_TOP, 0)
+
+                // Update margins, set to 10dp
+                val margin = TypedValue.applyDimension(
+                    TypedValue.COMPLEX_UNIT_DIP, 10f,
+                    resources.displayMetrics
+                ).toInt()
+                params.setMargins(margin, margin, margin, margin)
+                myLocationButton.layoutParams = params
             }
+        }
     }
+
+    private fun checkMyPermission() {
+        Dexter.withContext(this@DiscoverFragment.activity)
+            .withPermission(android.Manifest.permission.ACCESS_FINE_LOCATION)
+            .withListener(object : PermissionListener {
+                override fun onPermissionGranted(response: PermissionGrantedResponse) {
+//                    Snackbar.make(view!!.findViewById(R.id.discoverLayout), "Permission Granted", Snackbar.LENGTH_LONG).show()
+//                    Toast.makeText(this@DiscoverFragment.activity, "Permission Granted", Toast.LENGTH_LONG).show()
+                    isPermissionGranted = true
+                }
+
+                override fun onPermissionDenied(response: PermissionDeniedResponse) {
+                    val intent = Intent()
+                    intent.action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
+                    val uri: Uri = Uri.fromParts("package", context!!.packageName, "")
+                    intent.data = uri
+
+                    Toast.makeText(this@DiscoverFragment.activity, "Turn on your location permission", Toast.LENGTH_LONG).show()
+                    startActivity(intent)
+                }
+
+                override fun onPermissionRationaleShouldBeShown(
+                    permission: PermissionRequest?,
+                    token: PermissionToken?
+                ) {
+                    token?.continuePermissionRequest()
+                }
+            }).check()
+    }
+
 }
