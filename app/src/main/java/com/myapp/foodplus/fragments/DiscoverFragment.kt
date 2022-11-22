@@ -4,18 +4,21 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings
-import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.RelativeLayout
 import android.widget.Toast
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.PermissionToken
 import com.karumi.dexter.listener.PermissionDeniedResponse
@@ -23,18 +26,19 @@ import com.karumi.dexter.listener.PermissionGrantedResponse
 import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.single.PermissionListener
 import com.myapp.foodplus.R
+import com.myapp.foodplus.activities.RestaurantDetailActivity
+import com.myapp.foodplus.adaters.RestaurantAdapter
+import com.myapp.foodplus.models.RestaurantData
 
 
 class DiscoverFragment : Fragment(), OnMapReadyCallback {
 
     private var isPermissionGranted: Boolean = false
+    private var  myLocationButton: View? = null
 
     override fun onMapReady(googleMap: GoogleMap) {
-
-        // Add a marker in Sydney and move the camera
         googleMap.isMyLocationEnabled = true
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLng(-7.793358, 110.370479), 12f))
-
     }
 
     override fun onCreateView(
@@ -48,33 +52,65 @@ class DiscoverFragment : Fragment(), OnMapReadyCallback {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Initialize google maps
         checkMyPermission()
-
         if (isPermissionGranted) {
             val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
             mapFragment?.getMapAsync(this)
-            val myLocationButton: View? = mapFragment?.view?.findViewById(0x2)
+            myLocationButton = mapFragment?.view?.findViewById(0x2)
 
-            if (myLocationButton != null && myLocationButton.layoutParams is RelativeLayout.LayoutParams) {
-                // location button is inside of RelativeLayout
-                val params = myLocationButton.layoutParams as RelativeLayout.LayoutParams
-
-                // Align it to - parent BOTTOM|LEFT
-                params.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM)
-                params.addRule(RelativeLayout.ALIGN_PARENT_LEFT)
-                params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, 0)
-                params.addRule(RelativeLayout.ALIGN_PARENT_TOP, 0)
-
-                // Update margins, set to 10dp
-                val margin = TypedValue.applyDimension(
-                    TypedValue.COMPLEX_UNIT_DIP, 10f,
-                    resources.displayMetrics
-                ).toInt()
-                params.setMargins(margin, margin, margin, margin)
-                myLocationButton.layoutParams = params
+            // Remove the default my location button
+            if (myLocationButton != null ) {
+               myLocationButton?.visibility = View.GONE
             }
         }
+
+        // Configure bottom sheet
+        val bottomSheet = view.findViewById<ConstraintLayout>(R.id.bottomSheet)
+        BottomSheetBehavior.from(bottomSheet).apply {
+            peekHeight = 210
+            this.state = BottomSheetBehavior.STATE_EXPANDED
+            // ToDo : set bottom sheet jd expanded ketika radio button di klik (dan ubah tvDescription nya)
+        }
+
+        // Configure myLocation Button
+        view.findViewById<FloatingActionButton>(R.id.fabMyLocation).setOnClickListener {
+            if(myLocationButton != null)
+                myLocationButton?.callOnClick()
+        }
+
+        // Configure Restaurants Recycler View
+        val restaurantDataList = ArrayList<RestaurantData>()
+        restaurantDataList.addAll(listRestaurantData)
+        val recyclerView = view.findViewById<RecyclerView>(R.id.rv_restaurant)
+        recyclerView.layoutManager = LinearLayoutManager(context)
+        recyclerView.setHasFixedSize(true)
+        recyclerView.isNestedScrollingEnabled = true
+        recyclerView.adapter = RestaurantAdapter(requireContext(), restaurantDataList) {
+            val intent = Intent (context, RestaurantDetailActivity::class.java)
+            intent.putExtra("OBJECT_INTENT", it)
+            startActivity(intent)
+        }
     }
+
+    private val listRestaurantData: ArrayList<RestaurantData>
+        get() {
+            val dataName = resources.getStringArray(R.array.data_restaurant_name)
+            val dataHighlight = resources.getStringArray(R.array.data_restaurant_highlight)
+            val dataPhoto = resources.obtainTypedArray(R.array.data_restaurant_photo)
+            val dataDesc = resources.getStringArray(R.array.data_restaurant_description)
+
+            val lists = ArrayList<RestaurantData>()
+            for (i in 1..5) { // set data restaurant bakery menjadi 5 ke dalam list
+                for (i in dataName.indices) {
+                    val restaurantData = RestaurantData(
+                        dataName[i], dataHighlight[i], dataPhoto.getResourceId(i, -1), dataDesc[i], 0.0, 0.0
+                    )
+                    lists.add(restaurantData)
+                }
+            }
+            return lists
+        }
 
     private fun checkMyPermission() {
         Dexter.withContext(this@DiscoverFragment.activity)

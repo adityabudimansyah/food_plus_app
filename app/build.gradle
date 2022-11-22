@@ -3,6 +3,7 @@ plugins {
     id 'org.jetbrains.kotlin.android'
 
     id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
+    id 'kotlin-parcelize'
 }
 
 android {
@@ -70,4 +71,9 @@ dependencies {
     // Simplifies requesting permissions at runtime
     implementation 'com.karumi:dexter:6.2.3'
 
+    // Recycler View
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+
+    // Circle Image
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
 }

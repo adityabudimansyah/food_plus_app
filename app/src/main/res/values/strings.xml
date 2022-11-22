@@ -4,4 +4,20 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_maps">MapsActivity</string>
     <string name="title_activity_discover_maps">DiscoverMapsActivity</string>
+
+    <string-array name="data_restaurant_name">
+        <item>Bakery Cake &amp; Shop</item>
+    </string-array>
+
+    <string-array name="data_restaurant_highlight">
+        <item>Bakery shop</item>
+    </string-array>
+
+    <integer-array name="data_restaurant_photo">
+        <item>@drawable/image_bakery_restaurant</item>
+    </integer-array>
+
+    <string-array name="data_restaurant_description">
+        <item>Restaurant ini menjual makanan premium yaitu aneka ayam goreng.</item>
+    </string-array>
 </resources>
