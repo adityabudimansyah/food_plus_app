@@ -1,12 +1,11 @@
 package com.myapp.foodplus.activities
 
+import android.graphics.Paint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Menu
 import com.myapp.foodplus.R
 import com.myapp.foodplus.databinding.ActivityMenuDetailBinding
 import com.myapp.foodplus.models.MenuData
-import com.myapp.foodplus.models.RestaurantData
 
 class MenuDetailActivity : AppCompatActivity() {
 
@@ -20,7 +19,18 @@ class MenuDetailActivity : AppCompatActivity() {
         setToolbar()
 
         // Get Data with intent and set to view
-        val restaurantData = intent.getParcelableExtra<MenuData>("OBJECT_INTENT")
+        val menuData = intent.getParcelableExtra<MenuData>("OBJECT_INTENT")
+        binding.tvMenuTitle.text = menuData?.name
+        binding.tvStockAmount.text = "${menuData?.stock} left"
+        binding.tvPrice.text = "Rp${menuData?.price}"
+        binding.tvDescription.text = menuData?.description
+        binding.tvPriceNormal.text = "Rp${menuData?.normalPrice}"
+        binding.tvPriceNormal.paintFlags = binding.tvPriceNormal.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG // set strike text
+        binding.tvExpire.text = menuData?.expireDate
+
+        binding.btAdd.setOnClickListener {
+            finish()
+        }
     }
 
     private fun setToolbar() {

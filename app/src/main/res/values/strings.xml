@@ -9,7 +9,7 @@
 
     <!-- Restaurant array-->
     <string-array name="data_restaurant_name">
-        <item>Bakery Cake &amp; Shop</item>
+        <item>Abella Bakery &amp; Cake</item>
     </string-array>
 
     <string-array name="data_restaurant_highlight">
@@ -26,7 +26,7 @@
 
     <!-- Menu array-->
     <string-array name="data_menu_name">
-        <item>Croissant</item>
+        <item>Croissant Bread</item>
     </string-array>
 
     <string-array name="data_menu_stock">
@@ -46,7 +46,7 @@
     </integer-array>
 
     <string-array name="data_menu_description">
-        <item>Croissant berasal dari Austria dengan sebutan kipferl. Kue ini sangat mengilap karena dioles oleh mentega sebelum dipanggang di dalam oven.
+        <item>Croissant berasal dari Austria dengan sebutan kipferl.  Kue ini sangat mengilap karena dioles oleh mentega sebelum dipanggang di dalam oven.
         </item>
     </string-array>
 
@@ -54,5 +54,29 @@
         <item><strike>Expired at 12 Desember 2022</strike></item>
     </string-array>
 
+    <!-- Restaurant Location-->
+    <string-array name="loc_name">
+        <item>Restaurant 1</item>
+        <item>Restaurant 2</item>
+        <item>Restaurant 3</item>
+        <item>Restaurant 4</item>
+        <item>Restaurant 5</item>
+    </string-array>
+
+    <string-array name="latitude">
+        <item>-7.775448482884702</item>
+        <item>-7.787359237017406</item>
+        <item>-7.777834091604044</item>
+        <item>-7.784298024209582</item>
+        <item>-7.791271546850344</item>
+    </string-array>
+
+    <string-array name="longitude">
+        <item>110.3803106106482</item>
+        <item>110.40486581417186</item>
+        <item>110.41379190488631</item>
+        <item>110.40074572228235</item>
+        <item>110.39181947968531</item>
+    </string-array>
 
 </resources>

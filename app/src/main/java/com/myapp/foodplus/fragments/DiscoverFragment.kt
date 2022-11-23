@@ -1,6 +1,9 @@
 package com.myapp.foodplus.fragments
 
+import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.Canvas
 import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings
@@ -9,6 +12,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -16,7 +20,10 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.BitmapDescriptor
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.karumi.dexter.Dexter
@@ -30,7 +37,6 @@ import com.myapp.foodplus.activities.RestaurantDetailActivity
 import com.myapp.foodplus.adaters.RestaurantAdapter
 import com.myapp.foodplus.models.RestaurantData
 
-
 class DiscoverFragment : Fragment(), OnMapReadyCallback {
 
     private var isPermissionGranted: Boolean = false
@@ -38,7 +44,39 @@ class DiscoverFragment : Fragment(), OnMapReadyCallback {
 
     override fun onMapReady(googleMap: GoogleMap) {
         googleMap.isMyLocationEnabled = true
-        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLng(-7.793358, 110.370479), 12f))
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLng(-7.7796278208676775, 110.42692899786957), 14f))
+//        googleMap.addMarker( MarkerOptions().position(LatLng(-7.775448482884702, 110.3803106106482)).title("Restaurant 1"))
+
+        val locName = resources.getStringArray(R.array.loc_name)
+        val lat = resources.getStringArray(R.array.latitude)
+        val long = resources.getStringArray(R.array.longitude)
+
+        for (i in locName.indices) {
+            googleMap.addMarker( MarkerOptions()
+                .position(LatLng(lat[i].toDouble(), long[i].toDouble()))
+                .title(locName[i])
+                .icon(BitmapFromVector(requireContext(), R.drawable.ic_restaurant_location_open)))
+
+        }
+
+    }
+
+    private fun BitmapFromVector(context: Context, vectorResId: Int): BitmapDescriptor? {
+        val vectorDrawable = ContextCompat.getDrawable(context, vectorResId)
+        vectorDrawable!!.setBounds(
+            0,
+            0,
+            vectorDrawable.intrinsicWidth,
+            vectorDrawable.intrinsicHeight
+        )
+        val bitmap = Bitmap.createBitmap(
+            vectorDrawable.intrinsicWidth,
+            vectorDrawable.intrinsicHeight,
+            Bitmap.Config.ARGB_8888
+        )
+        val canvas = Canvas(bitmap)
+        vectorDrawable.draw(canvas)
+        return BitmapDescriptorFactory.fromBitmap(bitmap)
     }
 
     override fun onCreateView(

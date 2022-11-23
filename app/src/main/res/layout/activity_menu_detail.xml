@@ -6,6 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".activities.MenuDetailActivity">
 
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:src="@drawable/image_bakery_restaurant_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -14,5 +24,293 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintContent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="-50dp"
+        android:background="@drawable/shape_bottomsheet_bg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/toolbar"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView4"
+        app:layout_constraintVertical_bias="0.0">
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivMenuImage"
+        android:layout_width="210dp"
+        android:layout_height="210dp"
+        android:adjustViewBounds="true"
+        android:layout_marginTop="-160dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView4"
+        app:srcCompat="@drawable/image_menu_croissant_detail"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvMenuTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="-5dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:gravity="center"
+        android:text="Croissant Bread"
+        android:textColor="@color/textColorPrimary"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivMenuImage" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvRestaurantName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="-2dp"
+        android:fontFamily="@font/poppins_medium"
+        android:gravity="center"
+        android:text="Abella Bakery &amp; Cake"
+        android:textColor="@color/textColorPrimary"
+        android:textSize="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvMenuTitle" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvTitlePrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="15dp"
+        android:text="PRICE"
+        android:textColor="@color/textColorSecondary"
+        android:textSize="12sp"
+        app:fontFamily="@font/poppins_semibold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvRestaurantName" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginTop="-3dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:gravity="start"
+        android:text="Rp15.000"
+        android:textColor="@color/orangePrimary"
+        android:textSize="22sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitlePrice" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvPriceNormal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="-4dp"
+        android:fontFamily="@font/poppins_regular"
+        android:gravity="start"
+        android:text="Rp30.000"
+        android:textColor="@color/textColorSecondary"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvPrice" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvTitleDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="15dp"
+        android:text="DESCRIPTION"
+        android:textColor="@color/textColorSecondary"
+        android:textSize="12sp"
+        app:fontFamily="@font/poppins_semibold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvPriceNormal" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:fontFamily="@font/poppins_regular"
+        android:gravity="start"
+        android:text="Croissant berasal dari Austria dengan sebutan kipferl.  Kue ini sangat mengilap karena dioles oleh mentega sebelum dipanggang di dalam oven."
+        android:textColor="@color/textColorPrimary"
+        android:textSize="14sp"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitleDescription"
+        tools:layout_editor_absoluteX="3dp" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvTitleInformation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="15dp"
+        android:text="INFORMATION"
+        android:textColor="@color/textColorSecondary"
+        android:textSize="12sp"
+        app:fontFamily="@font/poppins_semibold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvDescription" />
+
+    <LinearLayout
+        android:id="@+id/linearStock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitleInformation" >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_marginRight="8dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_food_stock"
+            />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvStockAmount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_regular"
+            android:gravity="start"
+            android:text="3 Left"
+            android:textColor="@color/textColorPrimary"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearExpire"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearStock">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:layout_marginRight="8dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_expire" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvExpire"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_regular"
+            android:gravity="start"
+            android:text="Expired at 12 Desember 2022"
+            android:textColor="@color/textColorPrimary"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btAdd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/selector_button_main"
+        android:elevation="3dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:gravity="center"
+        android:includeFontPadding="false"
+        android:stateListAnimator="@null"
+        android:text="Add to Cart"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/constraintContent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/linearStockRemaining"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="19dp"
+        android:layout_marginBottom="15dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/btAdd"
+        app:layout_constraintStart_toStartOf="parent"
+        >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_marginRight="8dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_stock_remaining" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvStockRemaining"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_semibold"
+            android:gravity="start"
+            android:text="3 Left"
+            android:textColor="@color/textColorPrimary"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearOrderAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:layout_marginEnd="19dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/btAdd"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_marginRight="10dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:clickable="true"
+            android:src="@drawable/button_minus" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvOrderAmount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_semibold"
+            android:layout_marginTop="3dp"
+            android:text="1"
+            android:textColor="@color/textColorPrimary"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_marginLeft="10dp"
+            android:adjustViewBounds="true"
+            android:clickable="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/button_plus" />
+    </LinearLayout>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
