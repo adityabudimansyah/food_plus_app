@@ -5,6 +5,9 @@
     <string name="title_activity_maps">MapsActivity</string>
     <string name="title_activity_discover_maps">DiscoverMapsActivity</string>
 
+    <string name="price_normal"><strike>Rp30.000</strike></string>
+
+    <!-- Restaurant array-->
     <string-array name="data_restaurant_name">
         <item>Bakery Cake &amp; Shop</item>
     </string-array>
@@ -20,4 +23,36 @@
     <string-array name="data_restaurant_description">
         <item>Restaurant ini menjual makanan premium yaitu aneka ayam goreng.</item>
     </string-array>
+
+    <!-- Menu array-->
+    <string-array name="data_menu_name">
+        <item>Croissant</item>
+    </string-array>
+
+    <string-array name="data_menu_stock">
+        <item>3</item>
+    </string-array>
+
+    <string-array name="data_menu_price">
+        <item>15000</item>
+    </string-array>
+
+    <string-array name="data_menu_normal_price">
+        <item>30000</item>
+    </string-array>
+
+    <integer-array name="data_menu_photo">
+        <item>@drawable/image_menu_croissant</item>
+    </integer-array>
+
+    <string-array name="data_menu_description">
+        <item>Croissant berasal dari Austria dengan sebutan kipferl. Kue ini sangat mengilap karena dioles oleh mentega sebelum dipanggang di dalam oven.
+        </item>
+    </string-array>
+
+    <string-array name="data_menu_expire">
+        <item><strike>Expired at 12 Desember 2022</strike></item>
+    </string-array>
+
+
 </resources>

@@ -1,10 +1,15 @@
 package com.myapp.foodplus.activities
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.res.Resources
 import android.os.Bundle
+import android.view.Menu
+import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.tabs.TabLayoutMediator
 import com.myapp.foodplus.R
+import com.myapp.foodplus.adaters.PagerRestaurantDetailAdapter
 import com.myapp.foodplus.databinding.ActivityRestaurantDetailBinding
 import com.myapp.foodplus.models.RestaurantData
+
 
 class RestaurantDetailActivity : AppCompatActivity() {
 
@@ -17,12 +22,22 @@ class RestaurantDetailActivity : AppCompatActivity() {
 
         setToolbar()
 
-        // Get Data with intent
+        // Get Data with intent and set to view
         val restaurantData = intent.getParcelableExtra<RestaurantData>("OBJECT_INTENT")
-
         binding.tvRestaurantName.text = restaurantData!!.name
         binding.tvRestaurantHighlight.text = restaurantData.highlight
         binding.ivRestaurantImage.setImageResource(restaurantData.image)
+
+        // configure tab layout and viewpager
+        binding.viewPager.adapter = PagerRestaurantDetailAdapter(this)
+        TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, index ->
+            tab.text = when (index) {
+                0 -> { "Menu" }
+                1 -> { "About" }
+                else -> { throw Resources.NotFoundException("Position not found")}
+            }
+        }.attach()
+
     }
 
     private fun setToolbar() {
@@ -34,6 +49,12 @@ class RestaurantDetailActivity : AppCompatActivity() {
 
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
+        return true
+    }
+
+    // Add favorite button at toolbar
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.toolbar_restaurant_detail_menu, menu)
         return true
     }
 }
