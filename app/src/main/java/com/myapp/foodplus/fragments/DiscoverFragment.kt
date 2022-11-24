@@ -10,6 +10,8 @@ import android.provider.Settings
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
@@ -120,6 +122,12 @@ class DiscoverFragment : Fragment(), OnMapReadyCallback, OnMarkerClickListener,
             peekHeight = 210
             this.state = BottomSheetBehavior.STATE_EXPANDED
             // ToDo : set bottom sheet jd expanded ketika radio button di klik (dan ubah tvDescription nya)
+        }
+
+        // Bottom sheet will collapsed when seach edit text is clicked
+        val etSearch = view.findViewById<EditText>(R.id.etSearch)
+        etSearch.setOnClickListener {
+            BottomSheetBehavior.from(bottomSheet).state = BottomSheetBehavior.STATE_COLLAPSED
         }
 
         // Configure myLocation Button

@@ -24,7 +24,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
         <LinearLayout
-            android:id="@+id/etSearch"
+            android:id="@+id/linearSearch"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
@@ -47,6 +47,7 @@
                 android:src="@drawable/ic_search" />
 
             <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etSearch"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
@@ -68,7 +69,7 @@
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etSearch">
+            app:layout_constraintTop_toBottomOf="@+id/linearSearch">
 
             <RadioButton
                 android:id="@+id/rbNearest"
