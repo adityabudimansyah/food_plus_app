@@ -311,6 +311,4 @@
             android:src="@drawable/button_plus" />
     </LinearLayout>
 
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

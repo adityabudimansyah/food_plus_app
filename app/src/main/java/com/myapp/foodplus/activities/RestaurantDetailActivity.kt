@@ -1,5 +1,6 @@
 package com.myapp.foodplus.activities
 
+import android.content.Intent
 import android.content.res.Resources
 import android.os.Bundle
 import android.view.Menu
@@ -37,6 +38,11 @@ class RestaurantDetailActivity : AppCompatActivity() {
                 else -> { throw Resources.NotFoundException("Position not found")}
             }
         }.attach()
+
+        binding.constraintOrderButton.setOnClickListener {
+            val intent = Intent (this, CartDetailActivity::class.java)
+            startActivity(intent)
+        }
 
     }
 

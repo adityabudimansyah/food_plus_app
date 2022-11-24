@@ -93,7 +93,7 @@
             android:layout_marginHorizontal="16dp"
             android:fontFamily="@font/poppins_regular"
             android:gravity="start"
-            android:text="Jl. Laksda Adisucipto, No 16, Sleman"
+            android:text="Jl. K.H. Muhdi 53-32, Sleman"
             android:textColor="@color/textColorPrimary"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"

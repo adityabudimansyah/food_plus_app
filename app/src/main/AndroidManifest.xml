@@ -17,6 +17,27 @@
         android:theme="@style/Theme.FoodPlus"
         tools:targetApi="31">
         <activity
+            android:name=".activities.HistoryDetailActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".activities.OnGoingDetailActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".activities.CartDetailActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".activities.MenuDetailActivity"
             android:exported="false"
             android:screenOrientation="portrait">
