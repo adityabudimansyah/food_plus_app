@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragments.HistoryOrdersFragment">
+    tools:context=".fragments.HistoryOrdersFragment"
+    android:background="@color/backgroundColor">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cvHistoryItem"
@@ -94,7 +95,7 @@
                 android:layout_height="1dp"
                 android:layout_marginHorizontal="10dp"
                 android:layout_marginTop="10dp"
-                android:background="#CDCDCD"
+                android:background="#DADADA"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/ivRestaurantImage" />
 

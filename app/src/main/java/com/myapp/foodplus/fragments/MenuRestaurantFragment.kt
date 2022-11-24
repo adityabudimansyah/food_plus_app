@@ -52,14 +52,12 @@ class MenuRestaurantFragment : Fragment() {
             val dataExpireDate = resources.getStringArray(R.array.data_menu_expire)
 
             val lists = ArrayList<MenuData>()
-            for (i in 1..7 ) { // set data menu restaurant bakery menjadi 5 ke dalam list
-                for (i in dataName.indices) {
-                    val menuData = MenuData(
-                        dataName[i], dataStock[i].toInt(), dataPrice[i].toInt(), dataNormalPrice[i].toInt(),
-                                dataImage.getResourceId(i, -1), dataDesc[i], dataExpireDate[i]
-                    )
-                    lists.add(menuData)
-                }
+            for (i in dataName.indices) {
+                val menuData = MenuData(
+                    dataName[i], dataStock[i].toInt(), dataPrice[i].toInt(), dataNormalPrice[i].toInt(),
+                            dataImage.getResourceId(i, -1), dataDesc[i], dataExpireDate[i]
+                )
+                lists.add(menuData)
             }
             return lists
         }

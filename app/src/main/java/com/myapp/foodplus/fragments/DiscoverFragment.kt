@@ -18,11 +18,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.BitmapDescriptor
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -37,7 +39,8 @@ import com.myapp.foodplus.activities.RestaurantDetailActivity
 import com.myapp.foodplus.adaters.RestaurantAdapter
 import com.myapp.foodplus.models.RestaurantData
 
-class DiscoverFragment : Fragment(), OnMapReadyCallback {
+class DiscoverFragment : Fragment(), OnMapReadyCallback, OnMarkerClickListener,
+    GoogleMap.OnInfoWindowClickListener {
 
     private var isPermissionGranted: Boolean = false
     private var  myLocationButton: View? = null
@@ -47,10 +50,12 @@ class DiscoverFragment : Fragment(), OnMapReadyCallback {
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLng(-7.7796278208676775, 110.42692899786957), 14f))
 //        googleMap.addMarker( MarkerOptions().position(LatLng(-7.775448482884702, 110.3803106106482)).title("Restaurant 1"))
 
+        // get data from string resource
         val locName = resources.getStringArray(R.array.loc_name)
         val lat = resources.getStringArray(R.array.latitude)
         val long = resources.getStringArray(R.array.longitude)
 
+        // Display restaurant marker
         for (i in locName.indices) {
             googleMap.addMarker( MarkerOptions()
                 .position(LatLng(lat[i].toDouble(), long[i].toDouble()))
@@ -58,6 +63,12 @@ class DiscoverFragment : Fragment(), OnMapReadyCallback {
                 .icon(BitmapFromVector(requireContext(), R.drawable.ic_restaurant_location_open)))
 
         }
+
+//        // when marker clicked
+//        googleMap.setOnMarkerClickListener(this)
+
+        // when marker's info window clicked
+        googleMap.setOnInfoWindowClickListener(this)
 
     }
 
@@ -177,6 +188,36 @@ class DiscoverFragment : Fragment(), OnMapReadyCallback {
                     token?.continuePermissionRequest()
                 }
             }).check()
+    }
+
+    override fun onMarkerClick(p0: Marker): Boolean {
+
+//        // Get data from string resource
+//        val dataName = resources.getStringArray(R.array.data_restaurant_name)
+//        val dataHighlight = resources.getStringArray(R.array.data_restaurant_highlight)
+//        val dataPhoto = resources.obtainTypedArray(R.array.data_restaurant_photo)
+//        val dataDesc = resources.getStringArray(R.array.data_restaurant_description)
+//
+//        val intent = Intent (context, RestaurantDetailActivity::class.java)
+//        intent.putExtra("OBJECT_INTENT", RestaurantData(
+//            dataName[0], dataHighlight[0], dataPhoto.getResourceId(0, -1), dataDesc[0], 0.0, 0.0
+//        ))
+//        startActivity(intent)
+        return true
+    }
+
+    override fun onInfoWindowClick(p0: Marker) {
+        // Get data from string resource
+        val dataName = resources.getStringArray(R.array.data_restaurant_name)
+        val dataHighlight = resources.getStringArray(R.array.data_restaurant_highlight)
+        val dataPhoto = resources.obtainTypedArray(R.array.data_restaurant_photo)
+        val dataDesc = resources.getStringArray(R.array.data_restaurant_description)
+
+        val intent = Intent (context, RestaurantDetailActivity::class.java)
+        intent.putExtra("OBJECT_INTENT", RestaurantData(
+            dataName[0], dataHighlight[0], dataPhoto.getResourceId(0, -1), dataDesc[0], 0.0, 0.0
+        ))
+        startActivity(intent)
     }
 
 }

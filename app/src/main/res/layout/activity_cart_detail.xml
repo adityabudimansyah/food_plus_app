@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.CartDetailActivity">
+    tools:context=".activities.CartDetailActivity"
+    android:background="@color/backgroundColor">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -51,7 +52,7 @@
         android:text="Add Order"
         android:textColor="@color/orangePrimary"
         android:textSize="12sp"
-        app:fontFamily="@font/poppins_semibold"
+        app:fontFamily="@font/poppins_bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
@@ -76,7 +77,6 @@
                 android:id="@+id/ivMenuImage"
                 android:layout_width="56dp"
                 android:layout_height="56dp"
-
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -366,7 +366,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="20dp"
-        android:text="PICK-UP DETAILS"
+        android:text="PAYMENT DETAILS"
         android:textColor="@color/textColorSecondary"
         android:textSize="12sp"
         app:fontFamily="@font/poppins_semibold"

@@ -24,35 +24,64 @@
         <item>Restaurant ini menjual makanan premium yaitu aneka ayam goreng.</item>
     </string-array>
 
+
     <!-- Menu array-->
     <string-array name="data_menu_name">
         <item>Croissant Bread</item>
+        <item>Rainbow Cake</item>
+        <item>White Bread</item>
+        <item>Brownies</item>
+        <item>Pretzel</item>
     </string-array>
 
     <string-array name="data_menu_stock">
         <item>3</item>
+        <item>2</item>
+        <item>5</item>
+        <item>4</item>
+        <item>6</item>
     </string-array>
 
     <string-array name="data_menu_price">
+        <item>15000</item>
+        <item>10000</item>
+        <item>20000</item>
+        <item>45000</item>
         <item>15000</item>
     </string-array>
 
     <string-array name="data_menu_normal_price">
         <item>30000</item>
+        <item>20000</item>
+        <item>40000</item>
+        <item>90000</item>
+        <item>30000</item>
     </string-array>
 
     <integer-array name="data_menu_photo">
         <item>@drawable/image_menu_croissant</item>
+        <item>@drawable/image_menu_rainbow_cake</item>
+        <item>@drawable/image_menu_white_bread</item>
+        <item>@drawable/image_menu_brownies</item>
+        <item>@drawable/image_menu_pretzel</item>
     </integer-array>
 
     <string-array name="data_menu_description">
-        <item>Croissant berasal dari Austria dengan sebutan kipferl.  Kue ini sangat mengilap karena dioles oleh mentega sebelum dipanggang di dalam oven.
-        </item>
+        <item>Croissant berasal dari Austria dengan sebutan kipferl. Kue ini sangat mengilap karena dioles oleh mentega sebelum dipanggang di dalam oven.</item>
+        <item>Croissant berasal dari Austria dengan sebutan kipferl. Kue ini sangat mengilap karena dioles oleh mentega sebelum dipanggang di dalam oven.</item>
+        <item>Croissant berasal dari Austria dengan sebutan kipferl. Kue ini sangat mengilap karena dioles oleh mentega sebelum dipanggang di dalam oven.</item>
+        <item>Croissant berasal dari Austria dengan sebutan kipferl. Kue ini sangat mengilap karena dioles oleh mentega sebelum dipanggang di dalam oven.</item>
+        <item>Croissant berasal dari Austria dengan sebutan kipferl. Kue ini sangat mengilap karena dioles oleh mentega sebelum dipanggang di dalam oven.</item>
     </string-array>
 
     <string-array name="data_menu_expire">
         <item><strike>Expired at 12 Desember 2022</strike></item>
+        <item><strike>Expired at 12 Desember 2022</strike></item>
+        <item><strike>Expired at 12 Desember 2022</strike></item>
+        <item><strike>Expired at 12 Desember 2022</strike></item>
+        <item><strike>Expired at 12 Desember 2022</strike></item>
     </string-array>
+
 
     <!-- Restaurant Location-->
     <string-array name="loc_name">

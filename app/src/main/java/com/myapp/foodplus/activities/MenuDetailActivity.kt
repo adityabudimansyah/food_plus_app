@@ -27,6 +27,7 @@ class MenuDetailActivity : AppCompatActivity() {
         binding.tvPriceNormal.text = "Rp${menuData?.normalPrice}"
         binding.tvPriceNormal.paintFlags = binding.tvPriceNormal.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG // set strike text
         binding.tvExpire.text = menuData?.expireDate
+        binding.ivMenuImage.setImageResource(menuData!!.image)
 
         binding.btAdd.setOnClickListener {
             finish()
