@@ -70,36 +70,22 @@
             android:layout_height="48dp"
             android:background="@drawable/shape_restaurant_detail">
 
-            <LinearLayout
-                android:id="@+id/linearRating"
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvRating"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="7dp"
-                android:gravity="center_horizontal"
-                android:orientation="horizontal"
+                android:drawableStart="@drawable/ic_star_12"
+                android:drawableTint="@color/orangePrimary"
+                android:drawablePadding="2dp"
+                android:includeFontPadding="false"
+                android:text="4.8"
+                android:textColor="@color/textColorPrimary"
+                android:textSize="12sp"
+                app:fontFamily="@font/poppins_medium"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
-                    android:layout_marginRight="2dp"
-                    android:adjustViewBounds="true"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/ic_star"
-                    app:tint="@color/orangePrimary" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tvRating"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="4.8"
-                    android:textColor="@color/textColorPrimary"
-                    android:textSize="12sp"
-                    app:fontFamily="@font/poppins_medium" />
-            </LinearLayout>
+                app:layout_constraintTop_toTopOf="parent"/>
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvRatingAmount"
@@ -123,35 +109,21 @@
             android:layout_marginStart="17dp"
             android:background="@drawable/shape_restaurant_detail">
 
-            <LinearLayout
-                android:id="@+id/linearDistance"
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvDistance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="7dp"
-                android:gravity="center_horizontal"
-                android:orientation="horizontal"
+                android:drawableStart="@drawable/ic_location_point"
+                android:drawablePadding="2dp"
+                android:includeFontPadding="false"
+                android:text="3.4 Km"
+                android:textColor="@color/textColorPrimary"
+                android:textSize="12sp"
+                app:fontFamily="@font/poppins_medium"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="3dp"
-                    android:layout_marginRight="2dp"
-                    android:adjustViewBounds="true"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/ic_location_point" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tvDistance"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="3.4 Km"
-                    android:textColor="@color/textColorPrimary"
-                    android:textSize="12sp"
-                    app:fontFamily="@font/poppins_medium" />
-            </LinearLayout>
+                app:layout_constraintTop_toTopOf="parent"/>
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvDistanceTime"
@@ -175,42 +147,27 @@
             android:layout_marginStart="17dp"
             android:background="@drawable/shape_restaurant_detail">
 
-            <LinearLayout
-                android:id="@+id/linearOpen"
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvOpen"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="7dp"
-                android:gravity="center_horizontal"
-                android:orientation="horizontal"
+                android:drawableStart="@drawable/ic_clock"
+                android:drawablePadding="2dp"
+                android:drawableTint="@color/orangePrimary"
+                android:includeFontPadding="false"
+                android:text="Open"
+                android:textColor="@color/textColorPrimary"
+                android:textSize="12sp"
+                app:fontFamily="@font/poppins_medium"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="3dp"
-                    android:layout_marginRight="2dp"
-                    android:adjustViewBounds="true"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/ic_clock"
-                    app:tint="@color/orangePrimary" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tvOpen"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Open"
-                    android:textColor="@color/textColorPrimary"
-                    android:textSize="12sp"
-                    app:fontFamily="@font/poppins_medium" />
-            </LinearLayout>
+                app:layout_constraintTop_toTopOf="parent"/>
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvOpenDuration"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/linearOpen"
                 android:layout_marginBottom="7dp"
                 android:text="Now - 23:00"
                 android:textColor="@color/orangePrimary"

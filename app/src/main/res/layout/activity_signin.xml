@@ -127,7 +127,7 @@
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="14sp"
-        android:elevation="3dp"
+        android:elevation="2dp"
         android:stateListAnimator="@null"
         android:includeFontPadding="false"
         app:layout_constraintEnd_toEndOf="parent"

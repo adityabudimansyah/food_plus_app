@@ -12,9 +12,6 @@ import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.myapp.foodplus.R
 import com.myapp.foodplus.adaters.PagerOrdersAdapter
-import com.myapp.foodplus.adaters.PagerRestaurantDetailAdapter
-import com.myapp.foodplus.databinding.ActivityRestaurantDetailBinding
-import com.myapp.foodplus.models.RestaurantData
 
 class OrderFragment : Fragment() {
 
@@ -36,7 +33,7 @@ class OrderFragment : Fragment() {
         TabLayoutMediator(tabLayout, viewPager) { tab, index ->
             tab.text = when (index) {
                 0 -> { "Cart" }
-                1 -> { "On Going" }
+                1 -> { "Ongoing" }
                 2 -> { "History" }
                 else -> { throw Resources.NotFoundException("Position not found")}
             }

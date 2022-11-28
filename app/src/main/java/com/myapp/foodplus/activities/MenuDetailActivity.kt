@@ -37,7 +37,7 @@ class MenuDetailActivity : AppCompatActivity() {
     private fun setToolbar() {
         setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_ios_new_24)
+        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_white)
         supportActionBar?.setDisplayShowTitleEnabled(false)
     }
 

@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.MyRestaurantActivity"
+    android:background="@color/backgroundColor">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintHeader"
+                android:layout_width="match_parent"
+                android:layout_height="220dp"
+                android:background="@drawable/bg_orange_rectangle_profile"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cvRestaurantImage"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="68dp"
+                    app:cardCornerRadius="250dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/ivRestaurantImage"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        app:srcCompat="@drawable/image_bakery_restaurant" />
+                </androidx.cardview.widget.CardView>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvRestaurantName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="82dp"
+                    android:text="Abella Bakery &amp; Cake"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    app:fontFamily="@font/poppins_semibold"
+                    app:layout_constraintStart_toEndOf="@+id/cvRestaurantImage"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvRestaurantFavoriteAmount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="2 Favorite"
+                    android:textColor="@color/white"
+                    android:textSize="13sp"
+                    app:fontFamily="@font/poppins_regular"
+                    app:layout_constraintStart_toEndOf="@+id/cvRestaurantImage"
+                    app:layout_constraintTop_toBottomOf="@+id/tvRestaurantName" />
+
+                <LinearLayout
+                    android:id="@+id/linearReview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="34dp"
+                    android:layout_marginBottom="16dp"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/ivLineSeparator">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvRatingAmount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/ic_star_20"
+                        android:drawablePadding="2dp"
+                        android:includeFontPadding="false"
+                        android:text="4.9"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        app:fontFamily="@font/poppins_bold" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvReviewersAmount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="1dp"
+                        android:text="23 Reviewers"
+                        android:textColor="@color/white"
+                        android:textSize="10sp"
+                        app:fontFamily="@font/poppins_medium" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/ivLineSeparator"
+                    android:layout_width="1dp"
+                    android:layout_height="33dp"
+                    android:layout_marginBottom="21dp"
+                    android:background="#4DFFFFFF"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <LinearLayout
+                    android:id="@+id/linearBalance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="34dp"
+                    android:layout_marginBottom="16dp"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/ivLineSeparator">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvAmountBalance"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:includeFontPadding="false"
+                        android:text="Rp30.000"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        app:fontFamily="@font/poppins_bold" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvATitleBalance"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="1dp"
+                        android:text="Balance"
+                        android:textColor="@color/white"
+                        android:textSize="10sp"
+                        app:fontFamily="@font/poppins_medium" />
+
+                </LinearLayout>
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:layout_marginStart="-5dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvTitleSale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="20dp"
+                android:text="SALE"
+                android:textColor="@color/textColorSecondary"
+                android:textSize="12sp"
+                app:fontFamily="@font/poppins_semibold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/constraintHeader" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btNewOrder"
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="13dp"
+                android:background="@drawable/selector_button_login"
+                android:drawableStart="@drawable/ic_my_restaurant_bowl"
+                android:drawableEnd="@drawable/ic_my_restaurant_amount_order"
+                android:drawablePadding="10dp"
+                android:elevation="2dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:gravity="center_vertical"
+                android:includeFontPadding="false"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:stateListAnimator="@null"
+                android:text="New Order"
+                android:textAllCaps="false"
+                android:textColor="@color/textColorPrimary"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvTitleSale" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvTitleProducts"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="20dp"
+                android:text="PRODUCTS"
+                android:textColor="@color/textColorSecondary"
+                android:textSize="12sp"
+                app:fontFamily="@font/poppins_semibold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btNewOrder" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvAddProduct"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="20dp"
+                android:text="Add Product"
+                android:textColor="@color/orangePrimary"
+                android:textSize="12sp"
+                app:fontFamily="@font/poppins_semibold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btNewOrder" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btListProducts"
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="13dp"
+                android:background="@drawable/selector_button_login"
+                android:drawableStart="@drawable/ic_my_restaurant_list"
+                android:drawableEnd="@drawable/ic_arrow_forward"
+                android:drawablePadding="10dp"
+                android:drawableTint="@color/orangePrimary"
+                android:elevation="2dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:gravity="center_vertical"
+                android:includeFontPadding="false"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:stateListAnimator="@null"
+                android:text="Your Product List"
+                android:textAllCaps="false"
+                android:textColor="@color/textColorPrimary"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvTitleProducts" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvTitleOthersInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="20dp"
+                android:text="Others Info"
+                android:textColor="@color/textColorSecondary"
+                android:textSize="12sp"
+                app:fontFamily="@font/poppins_semibold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btListProducts" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btProfit"
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="13dp"
+                android:background="@drawable/selector_button_login"
+                android:drawableStart="@drawable/ic_my_restaurant_line_chart"
+                android:drawableEnd="@drawable/ic_arrow_forward"
+                android:drawablePadding="10dp"
+                android:drawableTint="@color/orangePrimary"
+                android:elevation="2dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:gravity="center_vertical"
+                android:includeFontPadding="false"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:stateListAnimator="@null"
+                android:text="Profit"
+                android:textAllCaps="false"
+                android:textColor="@color/textColorPrimary"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvTitleOthersInfo" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btPerformance"
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="13dp"
+                android:background="@drawable/selector_button_login"
+                android:drawableStart="@drawable/ic_my_restaurant_bar_chart"
+                android:drawableEnd="@drawable/ic_arrow_forward"
+                android:drawablePadding="10dp"
+                android:drawableTint="@color/orangePrimary"
+                android:elevation="2dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:gravity="center_vertical"
+                android:includeFontPadding="false"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:stateListAnimator="@null"
+                android:text="Performance"
+                android:textAllCaps="false"
+                android:textColor="@color/textColorPrimary"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btProfit" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btWithdraw"
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="13dp"
+                android:background="@drawable/selector_button_login"
+                android:drawableStart="@drawable/ic_my_restaurant_wallet"
+                android:drawableEnd="@drawable/ic_arrow_forward"
+                android:drawablePadding="10dp"
+                android:drawableTint="@color/orangePrimary"
+                android:elevation="2dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:gravity="center_vertical"
+                android:includeFontPadding="false"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:stateListAnimator="@null"
+                android:text="Withdraw"
+                android:textAllCaps="false"
+                android:textColor="@color/textColorPrimary"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btPerformance" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btEditProfile"
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="13dp"
+                android:layout_marginBottom="13dp"
+                android:background="@drawable/selector_button_login"
+                android:drawableStart="@drawable/ic_my_restaurant_edit"
+                android:drawableEnd="@drawable/ic_arrow_forward"
+                android:drawablePadding="10dp"
+                android:drawableTint="@color/orangePrimary"
+                android:elevation="2dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:gravity="center_vertical"
+                android:includeFontPadding="false"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:stateListAnimator="@null"
+                android:text="Edit Profile Restaurant"
+                android:textAllCaps="false"
+                android:textColor="@color/textColorPrimary"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btWithdraw" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabScanBarcode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/orangePrimary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:src="@drawable/image_barcode"
+        app:tint="@color/white"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

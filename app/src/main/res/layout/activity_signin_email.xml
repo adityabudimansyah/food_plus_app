@@ -107,7 +107,6 @@
             android:textColor="@color/textColorPrimary"
             android:textColorHint="@color/textColorSecondary"
             android:autofillHints="password"/>
-
     </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.appcompat.widget.AppCompatTextView
