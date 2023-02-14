@@ -4,15 +4,19 @@ import android.app.DatePickerDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ArrayAdapter
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.firebase.auth.FirebaseAuth
 import com.myapp.foodplus.R
 import com.myapp.foodplus.databinding.ActivityEditProfileBinding
+import com.myapp.foodplus.databinding.DialogBottomProfilePictureOptionsBinding
+import java.text.SimpleDateFormat
 import java.util.*
 
 class EditProfileActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityEditProfileBinding
     private lateinit var auth: FirebaseAuth
+    private val sdf = SimpleDateFormat("dd MMM yyyy", Locale.ENGLISH)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,9 +25,15 @@ class EditProfileActivity : AppCompatActivity() {
 
         setToolbar()
         setGenderOptions()
+
+
+        binding.civProfilePicture.setOnClickListener {
+            showProfilePictureOptions()
+        }
+
+//        Fetch data user
         auth = FirebaseAuth.getInstance()
         val user = auth.currentUser
-
         if (user != null) {
             binding.etName.setText("${user.displayName}")
             binding.etEmail.setText("${user.email}")
@@ -32,6 +42,13 @@ class EditProfileActivity : AppCompatActivity() {
         binding.etBirtDate.setOnClickListener {
             setBirthDate()
         }
+    }
+
+    private fun showProfilePictureOptions() {
+        val optionsViewBinding = DialogBottomProfilePictureOptionsBinding.inflate(layoutInflater)
+        val dialog = BottomSheetDialog(this)
+        dialog.setContentView(optionsViewBinding.root)
+        dialog.show()
     }
 
     private fun setGenderOptions() {
@@ -46,8 +63,11 @@ class EditProfileActivity : AppCompatActivity() {
         val month = c.get(Calendar.MONTH)
         val day = c.get(Calendar.DAY_OF_MONTH)
 
-        val datePickerDialog = DatePickerDialog(this, { datePicker, mYear, mMonth, mDay ->
-            binding.etBirtDate.setText("$mDay/${mMonth + 1}/$mYear")
+        val datePickerDialog = DatePickerDialog(this, { _, year, monthOfYear, dayOfMonth ->
+            val selectedDateStr = "$dayOfMonth/${monthOfYear + 1}/$year"
+            val sdfParse = SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH)
+            val date = sdfParse.parse(selectedDateStr)
+            binding.etBirtDate.setText(sdf.format(date!!))
         }, year, month, day)
         datePickerDialog.show()
     }
