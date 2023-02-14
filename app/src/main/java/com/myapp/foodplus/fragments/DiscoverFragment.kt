@@ -1,7 +1,9 @@
 package com.myapp.foodplus.fragments
 
+import android.Manifest
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.net.Uri
@@ -14,10 +16,13 @@ import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener
@@ -39,6 +44,7 @@ import com.karumi.dexter.listener.single.PermissionListener
 import com.myapp.foodplus.R
 import com.myapp.foodplus.activities.RestaurantDetailActivity
 import com.myapp.foodplus.adaters.RestaurantAdapter
+import com.myapp.foodplus.databinding.FragmentDiscoverBinding
 import com.myapp.foodplus.models.RestaurantData
 
 class DiscoverFragment : Fragment(), OnMapReadyCallback, OnMarkerClickListener,
@@ -46,10 +52,32 @@ class DiscoverFragment : Fragment(), OnMapReadyCallback, OnMarkerClickListener,
 
     private var isPermissionGranted: Boolean = false
     private var  myLocationButton: View? = null
+    private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
+    private lateinit var binding: FragmentDiscoverBinding
+    val restaurantList = arrayListOf<RestaurantData>()
 
     override fun onMapReady(googleMap: GoogleMap) {
+
+        if (ContextCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.ACCESS_COARSE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            return
+        }
         googleMap.isMyLocationEnabled = true
-        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLng(-7.7796278208676775, 110.42692899786957), 14f))
+        fusedLocationProviderClient.lastLocation.addOnSuccessListener { location ->
+
+            if (location != null){
+                val latLng = LatLng(location.latitude, location.longitude)
+//                googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 14f))
+                googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng,14f))
+            }
+        }
+//        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLng(-7.7796278208676775, 110.42692899786957), 14f))
 //        googleMap.addMarker( MarkerOptions().position(LatLng(-7.775448482884702, 110.3803106106482)).title("Restaurant 1"))
 
         // get data from string resource
@@ -97,7 +125,8 @@ class DiscoverFragment : Fragment(), OnMapReadyCallback, OnMarkerClickListener,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_discover, container, false)
+        binding = FragmentDiscoverBinding.inflate(layoutInflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -109,6 +138,7 @@ class DiscoverFragment : Fragment(), OnMapReadyCallback, OnMarkerClickListener,
             val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
             mapFragment?.getMapAsync(this)
             myLocationButton = mapFragment?.view?.findViewById(0x2)
+            fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(requireContext())
 
             // Remove the default my location button
             if (myLocationButton != null ) {
@@ -147,6 +177,20 @@ class DiscoverFragment : Fragment(), OnMapReadyCallback, OnMarkerClickListener,
             val intent = Intent (context, RestaurantDetailActivity::class.java)
             intent.putExtra("OBJECT_INTENT", it)
             startActivity(intent)
+        }
+
+        binding.rgCategory.setOnCheckedChangeListener { _, checkId ->
+            when (checkId) {
+                R.id.rbNearest -> {
+                    binding.tvDescription.text = "Here are nearest restaurant for you"
+                }
+                R.id.rbBestSeller -> {
+                    binding.tvDescription.text = "Here are best seller restaurant for you"
+                }
+                else -> {
+                    binding.tvDescription.text = "Here are trending restaurant for you"
+                }
+            }
         }
     }
 

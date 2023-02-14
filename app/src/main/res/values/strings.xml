@@ -90,6 +90,8 @@
         <item>Restaurant 3</item>
         <item>Restaurant 4</item>
         <item>Restaurant 5</item>
+        <item>Restaurant 6</item>
+        <item>Restaurant 7</item>
     </string-array>
 
     <string-array name="latitude">
@@ -98,6 +100,8 @@
         <item>-7.777834091604044</item>
         <item>-7.784298024209582</item>
         <item>-7.791271546850344</item>
+        <item>-6.337982269359761</item>
+        <item>-6.339411144371432</item>
     </string-array>
 
     <string-array name="longitude">
@@ -106,6 +110,8 @@
         <item>110.41379190488631</item>
         <item>110.40074572228235</item>
         <item>110.39181947968531</item>
+        <item>107.10816800686227</item>
+        <item>107.10722386925634</item>
     </string-array>
 
 
