@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.viewpager2.widget.ViewPager2
+import com.google.firebase.auth.FirebaseAuth
 import com.myapp.foodplus.R
 import com.myapp.foodplus.adaters.PagerAdapter
 import com.myapp.foodplus.databinding.ActivityOnboardingBinding
@@ -14,11 +15,14 @@ class OnboardingActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityOnboardingBinding
     private var itemList = ArrayList<OnBoardingData>()
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityOnboardingBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        auth = FirebaseAuth.getInstance()
 
         setUpViewPager()
     }
@@ -38,6 +42,16 @@ class OnboardingActivity : AppCompatActivity() {
                 binding.tvNext.text = "Let's save the food"
             } else {
                 binding.tvNext.text = "Next!"
+            }
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        if (auth.currentUser != null){
+            Intent(this@OnboardingActivity, MainActivity::class.java).also {
+                it.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                startActivities(arrayOf(it))
             }
         }
     }

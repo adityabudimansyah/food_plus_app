@@ -14,6 +14,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.LinearLayout
+import android.widget.TextView
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.app.ActivityCompat
@@ -35,6 +36,7 @@ import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.firebase.auth.FirebaseAuth
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.PermissionToken
 import com.karumi.dexter.listener.PermissionDeniedResponse
@@ -54,6 +56,7 @@ class DiscoverFragment : Fragment(), OnMapReadyCallback, OnMarkerClickListener,
     private var  myLocationButton: View? = null
     private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
     private lateinit var binding: FragmentDiscoverBinding
+    private lateinit var auth: FirebaseAuth
     val restaurantList = arrayListOf<RestaurantData>()
 
     override fun onMapReady(googleMap: GoogleMap) {
@@ -177,6 +180,15 @@ class DiscoverFragment : Fragment(), OnMapReadyCallback, OnMarkerClickListener,
             val intent = Intent (context, RestaurantDetailActivity::class.java)
             intent.putExtra("OBJECT_INTENT", it)
             startActivity(intent)
+        }
+
+        // Fetch the Dispay name of current user
+        auth = FirebaseAuth.getInstance()
+        val username = view.findViewById<TextView>(R.id.tvTitleName)
+        val user = auth.currentUser
+
+        if (user != null) {
+            username.text = "Welcome, ${user.displayName}"
         }
 
         binding.rgCategory.setOnCheckedChangeListener { _, checkId ->
