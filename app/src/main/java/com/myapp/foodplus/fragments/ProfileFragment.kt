@@ -1,15 +1,20 @@
 package com.myapp.foodplus.fragments
 
+import android.app.Dialog
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.widget.AppCompatButton
 import com.google.firebase.auth.FirebaseAuth
 import com.myapp.foodplus.R
+import com.myapp.foodplus.activities.EditProfileActivity
 import com.myapp.foodplus.activities.RegisterRestaurantActivity
 import com.myapp.foodplus.activities.SigninActivity
 import com.myapp.foodplus.databinding.FragmentProfileBinding
@@ -45,15 +50,12 @@ class ProfileFragment : Fragment() {
             startActivity(intent)
         }
         binding.btLogOut.setOnClickListener {
-            auth.signOut()
-            Intent(context, SigninActivity::class.java).also {
-                it.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                startActivity(it)
-            }
+            showDeleteConfirmation()
         }
-//        binding.btEditProfile.setOnClickListener {
-//            Toast.makeText(requireContext(), "Under Development", Toast.LENGTH_SHORT).show()
-//        }
+        binding.btEditProfile.setOnClickListener {
+            val intent = Intent(context, EditProfileActivity::class.java)
+            startActivity(intent)
+        }
         binding.btSecurityAndAccount.setOnClickListener {
             Toast.makeText(requireContext(), "Under Development", Toast.LENGTH_SHORT).show()
         }
@@ -75,6 +77,26 @@ class ProfileFragment : Fragment() {
         binding.btHelp.setOnClickListener {
             Toast.makeText(requireContext(), "Under Development", Toast.LENGTH_SHORT).show()
         }
+    }
+
+    private fun showDeleteConfirmation() {
+        val dialog = Dialog(requireContext())
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.setContentView(R.layout.dialog_logout_confirmation)
+
+        val tvCancel = dialog.findViewById<TextView>(R.id.tvCancel)
+        val tvExit = dialog.findViewById<TextView>(R.id.tvExit)
+
+        tvCancel.setOnClickListener { dialog.dismiss()
+        }
+        tvExit.setOnClickListener {
+            auth.signOut()
+            Intent(context, SigninActivity::class.java).also {
+                it.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                startActivity(it)
+            }
+        }
+        dialog.show()
     }
 
 

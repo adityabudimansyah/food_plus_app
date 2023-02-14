@@ -156,12 +156,36 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="20dp"
-            android:text="ACCOUNT SETTINGS"
+            android:text="USER SETTINGS"
             android:textColor="@color/textColorSecondary"
             android:textSize="12sp"
             app:fontFamily="@font/poppins_semibold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/constraintHeader" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btEditProfile"
+            android:layout_width="match_parent"
+            android:layout_height="49dp"
+            android:layout_marginHorizontal="16dp"
+            android:background="@drawable/selector_button_login"
+            android:drawableEnd="@drawable/ic_arrow_forward"
+            android:drawablePadding="10dp"
+            android:elevation="2dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:gravity="center_vertical"
+            android:includeFontPadding="false"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:layout_marginTop="13dp"
+            android:stateListAnimator="@null"
+            android:text="Edit Profile"
+            android:textAllCaps="false"
+            android:textColor="@color/textColorPrimary"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitleAccountSettings" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btSecurityAndAccount"
@@ -185,7 +209,7 @@
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvTitleAccountSettings" />
+            app:layout_constraintTop_toBottomOf="@+id/btEditProfile" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btMyAddress"
@@ -275,7 +299,7 @@
             android:paddingEnd="10dp"
             android:layout_marginTop="13dp"
             android:stateListAnimator="@null"
-            android:text="Connect Your Restaurant"
+            android:text="Open your shop"
             android:textAllCaps="false"
             android:textColor="@color/textColorPrimary"
             android:textSize="14sp"

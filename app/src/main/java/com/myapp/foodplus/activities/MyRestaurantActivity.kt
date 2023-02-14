@@ -27,6 +27,9 @@ class MyRestaurantActivity : AppCompatActivity() {
         binding.btListProducts.setOnClickListener {
             startActivity(Intent(this, MyRestaurantProductListActivity::class.java))
         }
+        binding.btProfit.setOnClickListener {
+            startActivity(Intent(this, MyRestaurantProfitActivity::class.java))
+        }
     }
 
     private fun setToolbar() {

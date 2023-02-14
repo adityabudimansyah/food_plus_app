@@ -16,6 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FoodPlus"
         tools:targetApi="31">
+
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
 
@@ -38,6 +39,14 @@
             android:name="org.apache.http.legacy"
             android:required="false" />
 
+        <activity
+            android:name=".activities.MyRestaurantProfitActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activities.EditProfileActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.MyRestaurantProductListActivity"
             android:exported="false"
