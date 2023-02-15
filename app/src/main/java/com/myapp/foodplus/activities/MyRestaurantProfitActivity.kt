@@ -5,11 +5,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.myapp.foodplus.R
 import com.myapp.foodplus.databinding.ActivityMyRestaurantProfitBinding
+import java.text.SimpleDateFormat
 import java.util.*
 
 class MyRestaurantProfitActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMyRestaurantProfitBinding
+    private val sdf = SimpleDateFormat("dd MMM yyyy", Locale.ENGLISH)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,8 +34,11 @@ class MyRestaurantProfitActivity : AppCompatActivity() {
         val month = c.get(Calendar.MONTH)
         val day = c.get(Calendar.DAY_OF_MONTH)
 
-        val datePickerDialog = DatePickerDialog(this, { datePicker, mYear, mMonth, mDay ->
-            binding.etCalendarBefore.setText("$mDay/${mMonth + 1}/$mYear")
+        val datePickerDialog = DatePickerDialog(this, { _, year, monthOfYear, dayOfMonth ->
+            val selectedDateStr = "$dayOfMonth/${monthOfYear + 1}/$year"
+            val sdfParse = SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH)
+            val date = sdfParse.parse(selectedDateStr)
+            binding.etCalendarBefore.setText(sdf.format(date!!))
         }, year, month, day)
         datePickerDialog.show()
     }
@@ -44,8 +49,11 @@ class MyRestaurantProfitActivity : AppCompatActivity() {
         val month = c.get(Calendar.MONTH)
         val day = c.get(Calendar.DAY_OF_MONTH)
 
-        val datePickerDialog = DatePickerDialog(this, { datePicker, mYear, mMonth, mDay ->
-            binding.etCalendarAfter.setText("$mDay/${mMonth + 1}/$mYear")
+        val datePickerDialog = DatePickerDialog(this, { _, year, monthOfYear, dayOfMonth ->
+            val selectedDateStr = "$dayOfMonth/${monthOfYear + 1}/$year"
+            val sdfParse = SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH)
+            val date = sdfParse.parse(selectedDateStr)
+            binding.etCalendarAfter.setText(sdf.format(date!!))
         }, year, month, day)
         datePickerDialog.show()
     }
